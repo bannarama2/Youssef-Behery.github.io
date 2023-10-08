@@ -1,0 +1,60 @@
+h1 {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'Oswald Light';
+    font-size: 19px;
+}
+
+html, head, .About_Me, .Professional_Experience, .Projects, .Skills, .Contact_Me {
+    background-image: linear-gradient(to bottom right, #00DBDE 0%, #4875dd 33%, #8e03ff 66%, #fc00ff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.About_Me, .Professional_Experience, .Projects, .Skills, .contact {
+    padding: 20em;
+    color: white;
+}
+
+body {
+    text-align: center;
+}
+
+.name, .email, .message {
+    padding: 15px;
+    color: white;
+    border-color: aqua;
+    font-family: 'Oswald Light';
+    font-size: 18px;
+}
+
+.message_label, .name_label, .email_label {
+    font-family: 'Oswald Light';
+    font-size: 18px;
+    padding: 2px;
+}
+
+input[type=text], textarea {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    border: none;
+}
+
+.button {
+    color: white;
+    border-radius: 5px;
+    width: 3cm; 
+    height: 1cm;
+    box-shadow: none;
+    background-color: #c36efd;
+    border: none;
+}
+
+.button:hover {
+    background-color: #dfb0ff;
+    border-radius: 8px;
+}
