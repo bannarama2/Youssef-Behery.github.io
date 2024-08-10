@@ -1,0 +1,64 @@
+@import url('https://fonts.cdnfonts.com/css/tama-mini02');
+
+html {
+    font-family: 'tama mini02', sans-serif;
+    color: #64998F;
+    background-color: #d7d4ca;
+}
+
+h1 {
+    font-family: 'tama mini02', sans-serif;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 19px;
+}
+
+
+.mainHeader {
+    text-align: center;
+    margin-top: 50px;
+    width: 50%;
+    margin-left: 355px;
+}
+
+/* .mainHeader h1 {
+    width: 50%;
+} */
+
+.mainContainer {
+    margin-top: 110px;
+    margin-bottom: 110px;
+    display: flex;
+    text-align: center;
+}
+
+.About_Me, .Projects {
+    padding: 30px;
+    margin: 30px;
+    border-radius: 20px;
+    width: fit-content;
+    background-color: #b4cadb;
+}
+
+.About_Me:hover, .Projects:hover {
+    box-shadow: 0px 0px 200px 25px #7ca3c0;
+}
+
+.projectButton {
+    margin-top: 50px;
+}
+
+.projectButton a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5em 2em;
+    background-color: #1D61CF;
+    border-radius: 0.5rem;
+}
+
+.projectButton a:hover {
+    background-color: #90E0E1;
+}
+
