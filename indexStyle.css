@@ -2,11 +2,9 @@
 
 html {
     font-family: 'tama mini02', sans-serif;
-    color: #156d5d;
-    background-color: #e2dfd5;
+    color: #131515;
+    background-color: #d7d4ca;
 }
-
-/* #64998F #d7d4ca*/
 
 h1 {
     font-family: 'tama mini02', sans-serif;
@@ -20,7 +18,7 @@ p {
 
 .mainHeader {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
     width: 50%;
     margin-left: 355px;
 }
@@ -37,16 +35,21 @@ p {
 }
 
 .About_Me, .Projects {
+    transform: rotateY(0deg);
     padding: 30px;
     margin: 30px;
     border-radius: 20px;
     width: fit-content;
-    background-color: #b4cadbc1;
+    background-color: #50858b9b;
+    border: dashed;
+    border-color: #361d2e99;
+    transition: transform 1s ease;
 }
 
 .About_Me:hover, .Projects:hover {
-    box-shadow: 0px 0px 60px 5px #7ca3c0;
+    transform: rotateY(360deg);    
 }
+
 
 .projectButton {
     margin-top: 50px;
@@ -54,9 +57,9 @@ p {
 
 .projectButton a {
     text-decoration: none;
-    color: white;
+    color: #131515;
     padding: 0.5em 2em;
-    background-color: #1D61CF;
+    background-color: #967AA1;
     border-radius: 0.5rem;
 }
 
