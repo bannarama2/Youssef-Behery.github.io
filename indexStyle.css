@@ -15,17 +15,13 @@ p {
     font-size: 19px;
 }
 
-
 .mainHeader {
     text-align: center;
-    margin-top: 100px;
     width: 50%;
-    margin-left: 355px;
+    margin: 0 auto;
+    margin-top: 65px;
 }
 
-/* .mainHeader h1 {
-    width: 50%;
-} */
 
 .mainContainer {
     margin-top: 110px;
@@ -35,7 +31,6 @@ p {
 }
 
 .About_Me, .Projects {
-    transform: rotateY(0deg);
     padding: 30px;
     margin: 30px;
     border-radius: 20px;
@@ -43,13 +38,23 @@ p {
     background-color: #50858b9b;
     border: dashed;
     border-color: #361d2e99;
-    transition: transform 1s ease;
+    animation-name: spin;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
 }
 
-.About_Me:hover, .Projects:hover {
-    transform: rotateY(360deg);    
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
 }
-
 
 .projectButton {
     margin-top: 50px;

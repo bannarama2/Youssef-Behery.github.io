@@ -2,11 +2,81 @@
 
 html {
     font-family: 'tama mini02', sans-serif;
-    color: #64998F;
-    background-color: #EBEAE7;
+    color: #131515;
+    background-color: #d7d4ca;
+}
+
+.myProjects {
+    margin: 20px;
+} 
+
+.projectsMainHeader {
+    font-size: 35px;
+    text-align: center;
+    margin-top: 65px;
 }
 
 .projectsContent {
-    padding: 200px;
-    background-color: #64998F;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    border: dashed;
+    border-color: #361d2e99;
+    background-color: #50858b9b;
+}
+
+.project{
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    border: dashed;
+    border-color: #361d2e99;
+    background-color: #aa88b6;
+    /* #967AA1 */
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.project h1 {
+    margin-bottom: 45px;
+    font-size: 40px;
+}
+
+.projectBody {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.projectBodyLeft {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    border: dashed;
+    border-radius: 20px;
+    border-color: #361d2e99;
+}
+
+.projectBody p {
+    width: 95%;
+    font-size: 23px;
+    margin: 45px 10px 10px 10px;
+}
+
+.projectBody a {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #69a5ab;
+    text-decoration: none;
+    color: #131515;
+    margin: 50px;
+}
+
+.projectBody a:hover {
+    background-color: #90E0E1;
+}
+
+.projectBody img {
+    height: 50%;
+    width: 50%;
+    border-radius: 20px;
 }
