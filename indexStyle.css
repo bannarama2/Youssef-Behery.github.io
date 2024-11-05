@@ -13,13 +13,12 @@ html {
 }
 
 h1 {
-    font-family: 'tama mini02', sans-serif;
     text-transform: uppercase;
 }
 
 p {
     /* font-size: 19px; */
-    font-size: 10px;
+    font-size: 19px;
 }
 
 .mainHeader {
@@ -27,13 +26,15 @@ p {
     width: 50%;
     margin: 0 auto;
     margin-top: 65px;
+    margin-bottom: 20px;
 }
 
 
 .mainContainer {
-    margin-top: 110px;
-    margin-bottom: 110px;
+    margin-top: 50px;
+    margin-bottom: 0px;
     display: flex;
+    justify-content: center;
     text-align: center;
 }
 
@@ -56,10 +57,10 @@ p {
         transform: rotateY(0deg);
     }
     50% {
-        transform: rotateY(180deg) rotateZ(180deg);
+        transform: rotateY(180deg);
     }
     100% {
-        transform: rotateY(360deg) rotateZ(360deg);
+        transform: rotateY(360deg);
     }
 }
 
