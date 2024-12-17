@@ -94,6 +94,7 @@ p {
 .githubButton img {
     width: 15px;
     height: 15px;
+    padding: 0;
     margin-right: 10px;
 }
 
