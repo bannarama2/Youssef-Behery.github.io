@@ -66,9 +66,15 @@ p {
 
 .projectButton {
     margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
-.projectButton a {
+.projectPageButton a, .githubButton {
+    display: flex; /* Align content (icon and text) in a row */
+    align-items: center; /* Vertically center text and icon */
+    justify-content: center; /* Center text and icon horizontally */
     text-decoration: none;
     color: #131515;
     padding: 0.5em 2em;
@@ -76,7 +82,19 @@ p {
     border-radius: 0.5rem;
 }
 
-.projectButton a:hover {
+.githubButton a {
+    text-decoration: none;
+    color: #131515;
+}
+
+.projectPageButton a:hover, .githubButton:hover {
     background-color: #90E0E1;
 }
+
+.githubButton img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
 
