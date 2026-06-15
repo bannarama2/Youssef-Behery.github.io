@@ -1,17 +1,455 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="indexStyle.css">
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Behery — Gameplay & Graphics Programmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0B0C;
+            --bg-card: #161513;
+            --border: #2A2826;
+            --text: #F2EBDD;
+            --text-dim: #8A857C;
+            --accent: #D17A47;
+            --accent-dim: #8C5435;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ───── HERO ───── */
+
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 0 40px;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(40px, 6vw, 58px);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p.tagline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(18px, 2.4vw, 24px);
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        .hero p.lead {
+            font-size: 17px;
+            color: var(--text-dim);
+            max-width: 460px;
+            margin-bottom: 32px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 10px 22px;
+            color: var(--text);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .pill.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #0B0B0C;
+        }
+
+        .pill.primary:hover {
+            background: var(--text);
+            border-color: var(--text);
+            color: #0B0B0C;
+        }
+
+        /* ───── CANVAS RENDER ───── */
+
+        .render-frame {
+            aspect-ratio: 1 / 1;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            background: #050505;
+        }
+
+        .render-frame img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .render-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 14px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            background: linear-gradient(to top, rgba(11, 11, 12, 0.85), transparent);
+        }
+
+        /* ───── SECTIONS ───── */
+
+        section {
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .section-note {
+            font-size: 13px;
+            color: var(--text-dim);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        /* ───── CURRENTLY BUILDING ───── */
+
+        .feature-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            background: var(--bg-card);
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 15px;
+            margin-bottom: 20px;
+            max-width: 620px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-dim);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+
+        .tag.wip {
+            color: var(--accent);
+            border-color: var(--accent-dim);
+        }
+
+        /* ───── SHIPPED GRID ───── */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            background: var(--bg-card);
+            transition: border-color 0.2s, transform 0.2s;
+            display: block;
+        }
+
+        .game-card:hover {
+            border-color: var(--accent-dim);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .game-card .genre {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .game-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .game-card p {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        .game-card .play {
+            margin-top: 18px;
+            font-size: 13px;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .game-card:hover .play {
+            color: var(--accent);
+        }
+
+        /* ───── FOOTER ───── */
+
+        footer {
+            padding: 48px 0 64px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        footer .links {
+            display: flex;
+            gap: 24px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+        }
+
+        footer .meta {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* ───── RESPONSIVE ───── */
+
+        @media (max-width: 760px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .render-frame {
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="mainHeader">
-        <h1>My Name is Youssef Behery.</h1>
-        <h1>I'm redesigning my website. It'll be up soon</h1>
+    <div class="wrap">
+
+        <!-- ───── HERO ───── -->
+        <div class="hero">
+            <div class="hero-inner">
+                <div>
+                    <div class="eyebrow">Gameplay &amp; Graphics Programmer</div>
+                    <h1>Youssef Behery</h1>
+                    <p class="tagline">I build things from first principles.</p>
+                    <p class="lead">
+                        Solo Unity developer and incoming MSc Games Technology student at Coventry University.
+                        Currently writing a CPU raytracer in C# — no engine, no graphics API, just maths and code.
+                        I also go by <strong>Bannie</strong> on Itch.io.
+                    </p>
+                    <div class="hero-links">
+                        <a href="#shipped" class="pill primary">Shipped games</a>
+                        <a href="#building" class="pill">Current build</a>
+                        <a href="https://github.com/bannarama2" class="pill">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="render-frame">
+                    <img src="https://raw.githubusercontent.com/bannarama2/Computer-Graphics-From-Scratch/refs/heads/main/Part%20I%20-%20Raytracing/Ch04%20-%20Shadows%20and%20Reflections/Shadows%20and%20Reflections/ImageSaves/img.png"
+                        alt="Render output from my C# raytracer — Phong shading, shadows, and reflections"
+                        loading="lazy">
+                    <div class="render-caption">Rendered by my C# raytracer — shadows &amp; reflections</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ───── CURRENTLY BUILDING ───── -->
+        <section id="building">
+            <div class="section-head">
+                <h2>Currently building</h2>
+                <div class="section-note">Apr 2026 — Present</div>
+            </div>
+
+            <div class="feature-card">
+                <h3>Software raytracer &amp; rasterizer</h3>
+                <p>
+                    A rendering pipeline built from scratch in C#, with zero engine or graphics API dependencies.
+                    The image on this page is rendered by the same lighting model — ambient, diffuse, and specular
+                    components computed directly, plus reflections and shadow casting.
+                </p>
+                <div class="tag-row">
+                    <span class="tag">Ray-sphere intersection</span>
+                    <span class="tag">Phong lighting</span>
+                    <span class="tag">Reflections</span>
+                    <span class="tag">Shadow casting</span>
+                    <span class="tag wip">Rasterizer — in progress</span>
+                </div>
+                <a href="https://github.com/bannarama2/Computer-Graphics-From-Scratch">View on GitHub →</a>
+            </div>
+        </section>
+
+        <!-- ───── SHIPPED ───── -->
+        <section id="shipped">
+            <div class="section-head">
+                <h2>Shipped games</h2>
+                <div class="section-note">Unity / C#</div>
+            </div>
+
+            <div class="grid">
+                <a href="https://banniedabananster.itch.io/one-jump-ahead" class="game-card">
+                    <span class="genre">Precision Platformer</span>
+                    <h3>One Jump Ahead</h3>
+                    <p>One jump per checkpoint. Miss it, and you start over.</p>
+                    <div class="play">Play on Itch.io →</div>
+                </a>
+
+                <a href="https://banniedabananster.itch.io/the-floor-is-coffee" class="game-card">
+                    <span class="genre">Climbing Platformer</span>
+                    <h3>The Floor is Coffee</h3>
+                    <p>Momentum-based climbing with procedurally generated platforms and a rising threat.</p>
+                    <div class="play">Play on Itch.io →</div>
+                </a>
+
+                <a href="https://banniedabananster.itch.io/operation-annihilation" class="game-card">
+                    <span class="genre">Survival Shooter</span>
+                    <h3>Operation Annihilation</h3>
+                    <p>Endless waves, a 3-hit life system, and progressive difficulty scaling.</p>
+                    <div class="play">Play on Itch.io →</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ───── FOOTER ───── -->
+        <footer>
+            <div class="meta">Cairo, Egypt — relocating to Coventry, UK, Sept 2026</div>
+            <div class="links">
+                <a href="https://github.com/bannarama2">GitHub</a>
+                <a href="https://banniedabananster.itch.io/">Itch.io</a>
+                <a href="www.linkedin.com/in/youssef-behery/">LinkedIn</a>
+                <a href="mailto:ybehery2003@gmail.com">Email</a>
+            </div>
+        </footer>
+
     </div>
+
 
 </body>
 
